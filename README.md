@@ -11,3 +11,6 @@ unix
 ```
 Judges' comments:
 http://www.ioccc.org/1987/korn/hint.html
+
+Original post:
+http://otbits.blogspot.fr/2009/06/ioccc-best-one-liner.html
