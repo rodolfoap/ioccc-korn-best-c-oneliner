@@ -9,8 +9,8 @@ A brief analysis of [korn.c](http://www.ioccc.org/1987/korn/korn.c), winner of t
 * ...found other reviews with conceptual mistakes, so I wrote mine...
 *
 * Winners:  http://www.ioccc.org/years.html#1987
-* The code: http://www.ioccc.org/1987/korn.c
-* Hints:    http://www.ioccc.org/1987/korn.hint
+* The code: http://www.ioccc.org/1987/korn/korn.c
+* Hints:    http://www.ioccc.org/1987/korn/korn.hint
 *
 * Rodolfo Alcazar Portillo <rodolfoap@gmail.com>
 * Original post in http://otbits.blogspot.fr/2009/06/ioccc-best-one-liner.html
