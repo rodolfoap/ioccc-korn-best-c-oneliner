@@ -1,5 +1,5 @@
 # ioccc-korn-best-c-oneliner
-Un breve análisis de [korn.c](http://www.ioccc.org/1987/korn/korn.c), ganador del [IOCCC](http://www.ioccc.org/) 1987 y calificado por los jueces como el mejor one-liner jamás hecho. Porqué? [Porque eso](http://www.ioccc.org/1987/korn/hint.html). Porque es una maravilla. Y porque muchos publicaron explicaciones con múltiples fallas y errores conceptuales.
+Un breve análisis de [korn.c](http://www.ioccc.org/1987/korn/korn.c), ganador del [IOCCC](http://www.ioccc.org/) 1987 y calificado por los jueces como el mejor one-liner jamás enviado. Porqué? [Porque eso](http://www.ioccc.org/1987/korn/hint.html). Porque es una maravilla. Y porque muchos publicaron explicaciones con múltiples fallas y errores conceptuales.
 
 ```
 #include <stdio.h>
@@ -12,14 +12,14 @@ Un breve análisis de [korn.c](http://www.ioccc.org/1987/korn/korn.c), ganador d
 * The code: http://www.ioccc.org/1987/korn/korn.c
 * Hints:    http://www.ioccc.org/1987/korn/korn.hint
 *
-* El programa one-liner original es este:
-*
-*    main(){printf(&unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60);}
-*
-* Lo que hace es imprimir "unix", aunque de una forma incomprensible.
+* El programa one-liner original (escrito por David Korn, creador del Korn
+* Shell) imprime "unix", aunque de una forma incomprensible.
 *
 *    $ ./korn
 *    unix
+*
+*    $ cat ./korn.c
+*    main(){printf(&unix["\021%six\012\0"],(unix)["have"]+"fun"-0x60);}
 *
 * Rodolfo Alcazar Portillo <rodolfoap@gmail.com>
 * Original en http://otbits.blogspot.fr/2009/06/ioccc-best-one-liner.html
