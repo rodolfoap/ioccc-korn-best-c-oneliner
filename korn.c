@@ -13,65 +13,67 @@
 */
 
 main() {
-	/* a simple text */
+	/* un texto simple */
 	printf("%s\n", "unix");
 
-	/* or... */
+	/* o... */
 	printf("%six\n", "un");
 
-	/* adding an unnecesary C text terminator does not change output */
+	/* añadir un terminador C, innecesario, no cambia la salida */
 	printf("%six\n\0", "un");
 
-	/* replace \n==\012 which is a printable form of an octal value */
+	/* remplazar \n==\012, lo que es la forma imprimible de un valor octal */
 	printf("%six\012\0", "un");
 
-	/* the additional X won't print due to +1 offset */
+	/* la X adicional X no se imprime por el offset (desplazamiento) +1 */
 	printf("X%six\012\0" + 1, "un");
 
-	/* nor any other character */
+	/* asi como ningún otro caracter */
 	printf("\021%six\012\0" + 1, "un");
 
-	/* rephrasing syntax as a text array */
+	/* refraseando la sintaxis como un array de caracteres */
 	printf(&"\021%six\012\0"[1], "un");
 
-	/* And the preprocessor said "Let unix==1". Verification
-	*      $ cpp -dM /dev/null | grep unix
+	/* El procesador de C dice "unix==1". Verificación:
+	*
+	*   $ cpp -dM /dev/null | grep unix
 	*   #define __unix__ 1
 	*   #define __unix 1
 	*   #define unix 1
 	*
-	* Therefore it won't run on Windows unless compiled with cygwin or defined in preprocessor as:
+	* Por tanto no puede ejecutarse en Windows a no ser que se compile con cygwin o el preprocesador defina:
 	* #define unix 1
 	*
-	* ...and therefore redefining the unix variable would raise an error.
+	* ...y luego, redefinir la variable unix va a devolver un error
 	*/
 	printf(&"\021%six\012\0"[unix], "un");
 
-	/* &text[n]==&n[text] is basic pointer arithmetics, or addition communitivity */
+	/* &text[n]==&n[text] es adicion básica de punteros, o conmutatividad de la adición */
 	printf(&unix["\021%six\012\0"], "un");
 
-	/* 'a'==0x61 then ('a'-0x61)==0 */
+	/* 'a'==0x61 o sea que ('a'-0x61)==0 */
 	printf(&unix["\021%six\012\0"], "un" + 'a' - 0x61);
 
-	/* Then add any char -X- and a offset of 1 (=='a'-0x60) */
+	/* Luego, añadir cualquier otro caracter -X- y un offset de 1 (=='a'-0x60) */
 	printf(&unix["\021%six\012\0"], "Xun" + 'a' - 0x60);
 
-	/* use a double-quoted string, and its offset, which gives an integer value: 'a'=="a"[0] */
+	/* usar un string entrecomillado, y su offset, lo que da un valor entero: 'a'=="a"[0] */
 	printf(&unix["\021%six\012\0"], "Xun" + "a"[0] - 0x60);
 
-	/* or the same, with an arbitrary text and offset */
+	/* o lo mismo, con un texto arbitrario y un offset */
 	printf(&unix["\021%six\012\0"], "Xun" + "XaXX"[1] - 0x60);
 
-	/* again, replace 1 with the predefined preprocessor unix==1 value...  */
+	/* nuevamente, remplazar 1 con el valor predefinido en el preprocessador unix==1 ...  */
 	printf(&unix["\021%six\012\0"], "Xun" + "XaXX"[unix] - 0x60);
 
-	/* rephrasing, array pointer arithmetics, addition is communitive */
+	/* reformulando, aritmetica de punteros de arrays, la suma es conmutativa */
 	printf(&unix["\021%six\012\0"], "Xun" + (unix)["XaXX"] - 0x60);
 
-	/* ditto */
+	/* idem */
 	printf(&unix["\021%six\012\0"], (unix)["XaXX"] + "Xun" - 0x60);
 
-	/* at last, change ignored chars to something meaningful */
+	/* al fin, cambiar los caracteres ignorados a algo significativo */
+	/* va a imprimir igualmente "unix" */
 	printf(&unix["\021%six\012\0"], (unix)["have"] + "fun" - 0x60);
 
 	return 0;
